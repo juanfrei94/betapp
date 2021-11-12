@@ -1,0 +1,9 @@
+@import './assets/colors';
+
+* {
+    font-family: "Open Sans","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+}
+
+html {
+    background-color: $main-background-color;
+}

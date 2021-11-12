@@ -1,0 +1,24 @@
+@import '../../../assets/colors';
+
+.news-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: $title-card-color;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.date {
+    font-size: 12px;
+    font-weight: normal;
+    color: $subtitle-card-color;
+    display: block;
+}
+
+.text {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: normal;
+}

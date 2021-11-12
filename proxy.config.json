@@ -1,0 +1,8 @@
+{
+    "*": {
+        "target": "https://www3.labanca.com.uy",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
