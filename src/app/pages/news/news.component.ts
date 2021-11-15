@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, pluck, tap } from 'rxjs/operators';
-import { New, NewFiltered, NewsServicesResp } from 'src/app/interface/new.interface';
+import { tap } from 'rxjs/operators';
+import { New } from 'src/app/interface/new.interface';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -11,22 +11,31 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsComponent implements OnInit {
 
-  news$: any;
+  news$ = new Observable<New[]>();
+  newsItems: New[] = [];
+  isFromDb = false;
 
-  constructor(private readonly _news: NewsService) { }
+  constructor(private readonly _newsService: NewsService) { }
 
   ngOnInit(): void {
-    this.getNewsFromService();
+    localStorage.getItem('database')
+      ? this.getNewsFromDatabase()
+      : this.getNewsFromService();
   }
-  
+
   private getNewsFromService() {
-    this.news$ = this._news.getNews().pipe(
-      pluck<NewsServicesResp, New[]>('noticias'),
-      // map( ), TODO: Implements map to filter usless attributes
-      tap(
-        console.log
-      )
-    ).subscribe()
+    this.news$ = this._newsService.getNews().pipe(
+      tap((resp: New[]) => {
+        resp.forEach(this._newsService.deleteUslessProperties);
+        this.newsItems = resp;
+        this._newsService.setLocalStorage(this.newsItems);
+      })
+    );
+  }
+
+  private getNewsFromDatabase() {
+    this.isFromDb = true;
+    this.newsItems = this._newsService.getLocalStorage();
   }
 
 }

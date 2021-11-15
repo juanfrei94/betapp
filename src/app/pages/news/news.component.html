@@ -1,8 +1,13 @@
-<div class="row news-card-container">
-    <ng-container>
-        <app-new-container class="col-md-6 col-sm-12 mb-5"></app-new-container>
-        <app-new-container class="col-md-6 col-sm-12 mb-5"></app-new-container>
-        <app-new-container class="col-md-6 col-sm-12 mb-5"></app-new-container>
-        <app-new-container class="col-md-6 col-sm-12 mb-5"></app-new-container>
+<div class="row news-card-container mb-5">
+    <ng-container *ngIf="news$ | async">
+        <ng-container *ngFor="let newsItem of newsItems">
+            <app-new-container [item]="newsItem" class="col-md-6 col-sm-12 p-4 dotted"></app-new-container>
+        </ng-container>
+    </ng-container>
+    
+    <ng-container *ngIf="isFromDb">
+        <ng-container *ngFor="let newsItem of newsItems">
+            <app-new-container [item]="newsItem" class="col-md-6 col-sm-12 p-4 dotted"></app-new-container>
+        </ng-container>
     </ng-container>
 </div>

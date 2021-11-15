@@ -7,3 +7,14 @@
     padding: 1.5em  1.5em 1em;
 }
 
+.dotted {
+    border-bottom: 1px dotted $dotted-color;
+}
+
+.dotted:nth-child(odd) {
+    border-right: 1px dotted $dotted-color;
+}
+
+.dotted:last-child {
+    border-bottom: none;
+}

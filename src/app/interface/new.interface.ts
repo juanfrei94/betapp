@@ -1,16 +1,16 @@
 export interface New {
     content: string;
-    created_at: string;
+    created_at?: string;
     fecha: string;
-    gallery_id: string;
+    gallery_id?: string;
     id: number;
-    imagen_content: Images;
+    imagen_content?: Images;
     imagen_titulo: Images;
-    order_view: number;
-    subtitulo: string;
+    order_view?: number;
+    subtitulo?: string;
     titulo: string;
-    updated_at: string;
-    visible: boolean;
+    updated_at?: string;
+    visible?: boolean;
 }
 
 export interface NewFiltered {

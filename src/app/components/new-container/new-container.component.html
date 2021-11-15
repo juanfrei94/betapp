@@ -1,15 +1,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 mb-4">
-            <div class="news-title">NUEVA RASPADITA | CIUDADES DEL MUNDO</div>
-            <div class="date">09/08/2021</div>
+            <div class="news-title"> {{item.titulo}} </div>
+            <div class="date"> {{item.fecha}} </div>
         </div>
-        <div class="col-8 text">
-            Para los cosmopolitas, llegó la nueva Raspadita “Ciudades del Mundo”. Vale $ 30 y tiene 8 destinos
-            diferentes para elegir y ganar hasta $ 2.000.000!!!
+        <div class="col-8 text" [innerHTML]="itemContentString">
         </div>
         <div class="col-4">
-            una img
+            <img class="w-100 h-100" [src]="item.imagen_titulo.url">
+        </div>
+        <div class="col-12">
+            <button class="btn btn-secondary" (click)="editNew(item)"> <i class="bi bi-pencil"></i> </button>
+            <button class="btn btn-danger ml-1" (click)="deleteNew(item)"> <i class="bi bi-trash"></i> </button>
         </div>
     </div>
 </div>
